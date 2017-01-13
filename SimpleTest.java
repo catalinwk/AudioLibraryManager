@@ -51,7 +51,8 @@ public class SimpleTest {
     public static void main(String[] args){
          String command = "";
          System.out.println("Audio Library Manager\ntype 'help' for command list");
-         while (!command.contains("exit")){
+        
+         /*while (!command.contains("exit")){
                        
                 Scanner s = new Scanner(System.in);
                 command = s.nextLine();
@@ -75,8 +76,12 @@ public class SimpleTest {
                 
            
         }
+         */
         
-        
+         
+         AudioShell as = new AudioShell();
+         as.initShell();
     }
+    
     
 }
