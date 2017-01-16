@@ -21,7 +21,7 @@ public interface AudioCommand {
     /**
      * Runs the command
      */
-    public void runCommand(ShellPath path)
+    public void runCommand(ShellPath path, String args)
     throws CommandException
     ;
         

@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.Arrays;
 
 /**
- * This class test the console for changinc currentPath and listing files
+ * This class test the console for changing currentPath and listing files
  * @author Catalin Mazilu
  */
 public class SimpleTest {
@@ -52,7 +52,6 @@ public class SimpleTest {
     public static void main(String[] args){
          String command = "";
     
-        
          /*while (!command.contains("exit")){
                        
                 Scanner s = new Scanner(System.in);
@@ -70,16 +69,11 @@ public class SimpleTest {
                if (command.contains("help")) {
                    System.out.println("help - getting commnmand list");
                    System.out.println("ls [directory] lists direcotry contents");
-                   System.out.println("cd [directory] change current direcotry");
-                   
-                   
+                   System.out.println("cd  change current direcotry");
                }
-                
-           
         }
          */
-        
-         
+
          AudioShell as = new AudioShell();
          
          /*
@@ -87,8 +81,8 @@ public class SimpleTest {
           */
          
          as.registerCommand(new CdCommand());
-         
-         
+         as.registerCommand(new ListCommand());
+         as.registerCommand(new PlayCommand());
          
          as.initShell();
     }

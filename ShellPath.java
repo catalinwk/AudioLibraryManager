@@ -24,7 +24,8 @@ public class ShellPath {
         
         File sp = new File(s);
         if (sp.exists())
-        {   path = s;
+        {  
+            path = s;
             return true;
         }
         

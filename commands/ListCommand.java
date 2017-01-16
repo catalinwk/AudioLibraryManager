@@ -11,17 +11,19 @@ import java.util.*;
 import audioLibraryManager.*;
 
 /**
- * Used to Change Direcotory
+ * Lists the content of current Path or given argument
  * @author Catalin Mazilu
  */
-public class CdCommand 
+public class ListCommand 
 implements AudioCommand
 
+
 {
-    /**
+    
+     /**
      * Name of the command
      */
-    String name="cd";
+    String name="list";
     
     /**
      * Returns the name of the command
@@ -39,40 +41,29 @@ implements AudioCommand
     public void runCommand(ShellPath path, String args)
     throws CommandException
     {
-        
-        StringTokenizer commandToken = new StringTokenizer(args);
-        
+         StringTokenizer commandToken = new StringTokenizer(args);
         if (commandToken.countTokens()>2)
             throw(new CommandException("Invalid number of arguments"));
-        commandToken.nextToken();
         
-        String newpath = commandToken.nextToken();
-        File f = new File(newpath);
-        /*
-         * BUG WHEN GETS TO C:\ it meet double of \\
-         */
+        File afile = new File(path.getPath());
         
-        System.out.println(f.getAbsolutePath());
+        File[] filesList = afile.listFiles();
         
-        
-         try {
-            
-                if (!path.setPath(f.getCanonicalPath()))
-                throw(new CommandException("Incorect path"));    
-                    
-                System.setProperty("user.dir", path.getPath());
-                
-            } catch (IOException e){
-                
+        for (File file : filesList){
+            if(file.isDirectory())
+                System.out.println(file.getName()+"<dir>");
+            if(file.isFile()){
+                if (file.getName().endsWith(".mp3") | file.getName().endsWith(".wav"))
+                    System.out.println(file.getName());
             }
         
         
+            
         
-       
-        
+         }
+    
+    
     }
-    
-    
     
     
 }

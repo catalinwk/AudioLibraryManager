@@ -56,19 +56,19 @@ public class AudioShell {
                  * The first element of command
                  */
                 StringTokenizer commandToken = new StringTokenizer(command);
-                
-               
+                 
                 /*
                  * searching the commands in the registered list
                  */
+                String firstToken = commandToken.nextToken();
                 
                 for (AudioCommand i:commandList){
                   
-                    if (i.getName().equals(commandToken.nextToken()) )
+                    if (i.getName().equals(firstToken) )
                     {
                         try {
                             
-                            i.runCommand(shellPath);
+                            i.runCommand(shellPath, command);
                             
                         } catch (CommandException e){
                             System.out.println(e.getMessage());
