@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package audioLibraryManager;
+import audioLibraryManager.commands.*;
 import java.io.*;
 import java.util.Scanner;
 import java.util.Arrays;
@@ -50,7 +51,7 @@ public class SimpleTest {
     
     public static void main(String[] args){
          String command = "";
-         System.out.println("Audio Library Manager\ntype 'help' for command list");
+    
         
          /*while (!command.contains("exit")){
                        
@@ -80,6 +81,15 @@ public class SimpleTest {
         
          
          AudioShell as = new AudioShell();
+         
+         /*
+          * Registering the commands
+          */
+         
+         as.registerCommand(new CdCommand());
+         
+         
+         
          as.initShell();
     }
     

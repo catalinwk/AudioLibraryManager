@@ -3,6 +3,8 @@
  * and open the template in the editor.
  */
 package audioLibraryManager;
+import audioLibraryManager.commands.interfaces.*;
+import audioLibraryManager.commands.*;
 import java.util.*;
 import java.io.*;
 
@@ -14,20 +16,21 @@ public class AudioShell {
     /**
      * Used for storing registered commands
      */
-    ArrayList<String> commandList = new ArrayList<String>();
+    ArrayList<AudioCommand> commandList = new ArrayList<AudioCommand>();
     
     /**
      * Storing current Path to display
      */
-    String currentPath = "";
     
+     
+    ShellPath shellPath = new ShellPath();
     /**
      * Used to initialise CurrentPath
      */
     AudioShell(){
-       
-        File path = new File(".");
-        currentPath = path.getAbsolutePath();
+     
+        
+        
     }
     
     
@@ -36,12 +39,59 @@ public class AudioShell {
      */
     
     public void initShell(){
-        System.out.print(currentPath);
+        System.out.println("Audio Library Manager\ntype 'help' for command list");               
+        //System.out.print(currentPath);
+        
+        
+        /* reading from keyboard until exit is typed */
+          String command = "";
+          
+         while (!command.contains("exit")){
+         
+                System.out.print(shellPath);
+                Scanner s = new Scanner(System.in);
+                command = s.nextLine();
+                
+                /*
+                 * The first element of command
+                 */
+                StringTokenizer commandToken = new StringTokenizer(command);
+                
+               
+                /*
+                 * searching the commands in the registered list
+                 */
+                
+                for (AudioCommand i:commandList){
+                  
+                    if (i.getName().equals(commandToken.nextToken()) )
+                    {
+                        try {
+                            
+                            i.runCommand(shellPath);
+                            
+                        } catch (CommandException e){
+                            System.out.println(e.getMessage());
+                        }
+                    }
+                }
+                
+               
+               if (command.contains("help")) {
+                   System.out.println("help - getting commnmand list");
+                   System.out.println("ls [directory] lists direcotry contents");
+                   System.out.println("cd [directory] change current direcotry");
+                   
+                   
+               }
+         }//end while
+        
+        
     }
     
     
-    public void registerCommand(){
-        
+    public void registerCommand(AudioCommand c){
+        commandList.add(c);
     }
     
     

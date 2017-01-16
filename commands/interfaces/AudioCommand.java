@@ -3,7 +3,9 @@
  * and open the template in the editor.
  */
 package audioLibraryManager.commands.interfaces;
-
+import audioLibraryManager.commands.*;
+import audioLibraryManager.*;
+import java.io.*;
 /**
  * Implements methods used by an audio command
  * @author Catalin Mazilu
@@ -19,7 +21,9 @@ public interface AudioCommand {
     /**
      * Runs the command
      */
-    public void runCommand();
+    public void runCommand(ShellPath path)
+    throws CommandException
+    ;
         
    
     
