@@ -59,7 +59,7 @@ implements AudioCommand
                     //d.open(new File("c:\\app\\mp3\\doi\\ibelive.mp3"));
                     d.open(new File(f.getCanonicalPath()));
                 } catch (IOException e){
-                    System.out.append(e.getMessage());
+                    System.out.println(e.getMessage());
                 }
                 
             } else {
