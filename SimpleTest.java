@@ -85,6 +85,7 @@ public class SimpleTest {
          as.registerCommand(new PlayCommand());
          as.registerCommand(new InfoCommand());
          as.registerCommand(new FavCommand());
+          as.registerCommand(new ReportCommand());
          
          as.initShell();
     }
