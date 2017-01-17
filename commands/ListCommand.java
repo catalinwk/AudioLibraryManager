@@ -36,7 +36,7 @@ implements AudioCommand
     }
     
     /**
-     * Runs the Change Directory command
+     * List the contents of a directory
      */
     public void runCommand(ShellPath path, String args)
     throws CommandException

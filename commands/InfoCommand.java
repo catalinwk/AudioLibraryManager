@@ -24,7 +24,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 
 /**
- * Displays information about mp3 file
+ * Displays information about Mp3 file
  * @author Catalin Mazilu
  */
 public class InfoCommand 
@@ -43,7 +43,7 @@ implements AudioCommand
     }
     
     /**
-     * Runs the Change Directory command
+     * Displays info from audio file
      */
     public void runCommand(ShellPath path, String args)
     throws CommandException

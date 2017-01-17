@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class SimpleTest {
     
     /*
-     * this is used to store current path
+     * this is used to store current pathcdcd
      */
     public static String currentPath = ".";
    
@@ -84,6 +84,7 @@ public class SimpleTest {
          as.registerCommand(new ListCommand());
          as.registerCommand(new PlayCommand());
          as.registerCommand(new InfoCommand());
+         as.registerCommand(new FavCommand());
          
          as.initShell();
     }
