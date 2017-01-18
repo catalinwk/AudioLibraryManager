@@ -52,9 +52,14 @@ public class AudioShell {
                 Scanner s = new Scanner(System.in);
                 command = s.nextLine();
                 
+                /* if nothing is entered do not check for command tokens */
+                if (command.length()<3)
+                       continue;
+                
                 /*
                  * The first element of command
                  */
+             
                 StringTokenizer commandToken = new StringTokenizer(command);
                  
                 /*
