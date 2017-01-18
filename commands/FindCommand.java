@@ -7,6 +7,13 @@ import audioLibraryManager.commands.interfaces.*;
 import audioLibraryManager.*;
 
 import java.io.*;
+import java.nio.*;
+import java.nio.file.*;
+import java.nio.file.attribute.*;
+import static java.nio.file.FileVisitResult.*;
+import static java.nio.file.FileVisitOption.*;
+import java.util.*;
+
 import java.util.*;
 
 
@@ -50,11 +57,22 @@ implements AudioCommand
             
             /*
              * find by name
+             * FileVisitor Interface Explained
+             * https://docs.oracle.com/javase/tutorial/essential/io/walk.html 
              */
             if (parameter.contentEquals("-name")){
                 
-                System.out.println("Find by name");
-                
+                 System.out.println("Find by name");
+                 
+                  FindCommandGlobEngine finder = new FindCommandGlobEngine(commandToken.nextToken());
+                      Path startingDir = Paths.get(path.getPath());
+                  try {
+                  Files.walkFileTree(startingDir, finder);
+                  finder.done();
+                  } catch (IOException e){
+                      throw(new CommandException("IOException "+e.getMessage()));
+                  }
+                      
             } 
             /*
              * find by author
