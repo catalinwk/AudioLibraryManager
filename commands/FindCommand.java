@@ -54,7 +54,7 @@ implements AudioCommand
             
             commandToken.nextToken();
             String parameter = commandToken.nextToken().toString();
-            
+            String search_pattern = commandToken.nextToken().toString();
             /*
              * find by name
              * FileVisitor Interface Explained
@@ -62,13 +62,15 @@ implements AudioCommand
              */
             if (parameter.contentEquals("-name")){
                 
-                 System.out.println("Find by name");
-                 
-                  FindCommandGlobEngine finder = new FindCommandGlobEngine(commandToken.nextToken());
-                      Path startingDir = Paths.get(path.getPath());
+                  System.out.println("Finding song by name");
+                  
+                  FindCommandGlobEngine finder = new FindCommandGlobEngine(search_pattern);
+                  
+                  Path startingDir = Paths.get(path.getPath());
+                  
                   try {
-                  Files.walkFileTree(startingDir, finder);
-                  finder.done();
+                    Files.walkFileTree(startingDir, finder);
+                    finder.done();
                   } catch (IOException e){
                       throw(new CommandException("IOException "+e.getMessage()));
                   }
@@ -77,8 +79,21 @@ implements AudioCommand
             /*
              * find by author
              */
-            else if (parameter.contentEquals("-author")){
-                System.out.println("Find by author");
+            else if (parameter.contentEquals("-artist")){
+                System.out.println("Find by artist");
+                FindCommandRegexEngine finder = new FindCommandRegexEngine(parameter,search_pattern);
+                  
+                  Path startingDir = Paths.get(path.getPath());
+                  
+                  try {
+                    Files.walkFileTree(startingDir, finder);
+                    finder.done();
+                  } catch (IOException e){
+                      throw(new CommandException("IOException "+e.getMessage()));
+                  }
+                
+                
+                
             }
             /*
              * find by album
@@ -86,9 +101,19 @@ implements AudioCommand
             else if (parameter.contentEquals("-album")){
             
                     System.out.println("Find by album");
+                    FindCommandRegexEngine finder = new FindCommandRegexEngine(parameter,search_pattern);
+                  
+                  Path startingDir = Paths.get(path.getPath());
+                  
+                  try {
+                    Files.walkFileTree(startingDir, finder);
+                    finder.done();
+                  } catch (IOException e){
+                      throw(new CommandException("IOException "+e.getMessage()));
+                  }
             }
             else {
-                throw(new CommandException("Incorect parameter.\nUsage: find [parameter] value\n-name find by name\n-author find by author\n-album find by album"));
+                throw(new CommandException("Incorect parameter.\nUsage: find [parameter] value\n-name find by name\n-artist find by artist\n-album find by album"));
             }
             
     

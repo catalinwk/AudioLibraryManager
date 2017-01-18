@@ -11,7 +11,7 @@ import static java.nio.file.FileVisitOption.*;
 import java.util.*;
 
 /**
- * Finds a song by name using glob engine
+ * Finds a song by filename using glob engine
  * @author Catalin Mazilu
  */
 public class FindCommandGlobEngine 
