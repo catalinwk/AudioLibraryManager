@@ -51,9 +51,7 @@ implements AudioCommand
         /*
          * BUG WHEN GETS TO C:\ it meet double of \\
          */
-        
-        System.out.println(f.getAbsolutePath());
-        
+  
         
          try {
             

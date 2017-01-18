@@ -21,7 +21,7 @@ public class ShellPath {
      *  sets and checks the given path 
      */
     public boolean setPath(String s){
-        
+           System.out.append("The new PATH IS" + path);
         File sp = new File(s);
         if (sp.exists())
         {  
@@ -29,6 +29,7 @@ public class ShellPath {
             return true;
         }
         
+        System.out.append("The new PATH IS" + path);
         
         return false;
     }
