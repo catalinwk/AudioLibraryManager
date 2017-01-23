@@ -1,0 +1,7 @@
+You need to put here:
+Lib/tika-app-1.14.jar
+
+Downloadit from here:
+https://archive.apache.org/dist/tika/
+
+
